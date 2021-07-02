@@ -29,6 +29,7 @@ class Calendar extends Component
 
         $this->resetField();
         $this->dispatchBrowserEvent('closeModalCreate', ['close' => true]);
+        $this->dispatchBrowserEvent('ModalCreateMessageSuccess', ['success' => true]);
         $this->dispatchBrowserEvent('refreshEventCalendar', ['refresh' => true]);
     }
 
@@ -36,6 +37,7 @@ class Calendar extends Component
     {
         Events::findOrFail($this->event_id)->delete();
         $this->dispatchBrowserEvent('closeModalEdit', ['close' => true]);
+        $this->dispatchBrowserEvent('ModalDeleteMessageSuccess', ['success' => true]);
         $this->dispatchBrowserEvent('refreshEventCalendar', ['refresh' => true]);
     }
 
@@ -48,6 +50,7 @@ class Calendar extends Component
         ]);
 
         $this->dispatchBrowserEvent('closeModalEdit', ['close' => true]);
+        $this->dispatchBrowserEvent('ModalEditMessageSuccess', ['success' => true]);
         $this->dispatchBrowserEvent('refreshEventCalendar', ['refresh' => true]);
     }
 
